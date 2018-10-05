@@ -1,10 +1,11 @@
 package com.example.vaibhav.k_login;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
-
+import android.widget.Toast;
 
 
 import java.util.List;
@@ -36,8 +37,12 @@ public class dbInit {
         addUser(db, user);
 
         List<User> userList = db.userDao().getAll();
-
+        Log.d("data: ", String.valueOf(userList.get(1).getEmail()));
         Log.d(dbInit.TAG, "Rows Count: " + userList.size());
+
+
+
+        // Toast.makeText( ,"Populating " + String.valueOf(userList.get(1)), Toast.LENGTH_SHORT ).show();
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
@@ -56,4 +61,6 @@ public class dbInit {
         }
 
     }
+
+     
 }
